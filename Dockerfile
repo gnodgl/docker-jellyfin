@@ -32,6 +32,7 @@ RUN \
     jellyfin-web \
     libfontconfig1 \
     libfreetype6 \
+    fonts-noto-cjk-extra \
     libssl1.1 \
     mesa-va-drivers && \
   echo "**** cleanup ****" && \

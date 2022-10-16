@@ -6,7 +6,7 @@ on:
       JELLYFIN_RELEASE:
         description: 'JELLYFIN RELEASE'
         required: true
-        default: ''
+        default: '10.8.5-1'
         type: choice
         options:
           - 10.8.1-1

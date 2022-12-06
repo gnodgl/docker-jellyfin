@@ -19,17 +19,20 @@ RUN \
   echo "**** install jellyfin *****" && \
   curl -s https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key | apt-key add - && \
   echo 'deb [arch=amd64] https://repo.jellyfin.org/ubuntu focal main' > /etc/apt/sources.list.d/jellyfin.list && \
+  echo 'deb [arch=amd64] https://repo.jellyfin.org/ubuntu focal main' && \
   if [ -z ${JELLYFIN_RELEASE+x} ]; then \
     JELLYFIN="jellyfin-server"; \
+    JELLYFIN_WEB="jellyfin-web"; \
   else \
-    JELLYFIN="jellyfin-server=${JELLYFIN_RELEASE}"; \
+    JELLYFIN="jellyfin-server=${JELLYFIN_RELEASE}-1"; \
+    JELLYFIN_WEB="jellyfin-web=${JELLYFIN_RELEASE}-1"; \
   fi && \
   apt-get update && \
   apt-get install -y --no-install-recommends \
     at \
     ${JELLYFIN} \
     jellyfin-ffmpeg5 \
-    jellyfin-web \
+    ${JELLYFIN_WEB} \
     libfontconfig1 \
     libfreetype6 \
     fonts-noto-cjk-extra \

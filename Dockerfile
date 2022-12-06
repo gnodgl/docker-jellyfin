@@ -30,7 +30,7 @@ RUN \
       libfreetype6 \
       fonts-noto-cjk-extra \
       libssl1.1 \
-      mesa-va-drivers \
+      mesa-va-drivers ;\
   else \
     curl -o jellyfin_${JELLYFIN_RELEASE}.deb https://repo.jellyfin.org/releases/server/ubuntu/stable/meta/jellyfin_${JELLYFIN_RELEASE}-1_all.deb && \
     dpkg -i jellyfin_${JELLYFIN_RELEASE}.deb && \
@@ -42,7 +42,7 @@ RUN \
       libfreetype6 \
       fonts-noto-cjk-extra \
       libssl1.1 \
-      mesa-va-drivers \
+      mesa-va-drivers ;\
   fi && \
   echo "**** cleanup ****" && \
   rm -rf \

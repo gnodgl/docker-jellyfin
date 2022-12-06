@@ -34,6 +34,7 @@ RUN \
   else \
     curl -o jellyfin_server.deb -L https://repo.jellyfin.org/releases/server/ubuntu/versions/stable/server/${JELLYFIN_RELEASE}/jellyfin-server_${JELLYFIN_RELEASE}-1_amd64.deb &&\
     curl -o jellyfin_web.deb -L https://repo.jellyfin.org/releases/server/ubuntu/versions/stable/web/${JELLYFIN_RELEASE}/jellyfin-web_${JELLYFIN_RELEASE}-1_all.deb &&\
+    apt-get update && \
     apt-get install -y --no-install-recommends \
       at \
       jellyfin-ffmpeg5\

@@ -29,10 +29,20 @@ jobs:
         run: docker build  . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/jellyfin:latest
       - name: BuildSelectDockerImage
         run: docker build --build-arg JELLYFIN_RELEASE=${{ inputs.JELLYFIN_RELEASE }} . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/jellyfin:${{ inputs.JELLYFIN_RELEASE }}
-      - name: Publish to Docker Repository
+      - name: Publish Latest to Docker Repository
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: ${{ secrets.DOCKER_USERNAME }}/jellyfin
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          tags: "latest,${{ inputs.JELLYFIN_RELEASE }}"
+          tags: "latest"
+      - name: Publish Select to Docker Repository
+        uses: elgohr/Publish-Docker-Github-Action@master
+        env:
+          JELLYFIN_RELEASE: ${{inputs.JELLYFIN_RELEASE}}
+        with:
+          name: ${{ secrets.DOCKER_USERNAME }}/jellyfin
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          buildargs: JELLYFIN_RELEASE
+          tags: ${{inputs.JELLYFIN_RELEASE}}

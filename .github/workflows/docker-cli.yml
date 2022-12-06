@@ -38,7 +38,7 @@ jobs:
       - name: BuildLatestDockerImage
         run: docker build  . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/jellyfin:latest
       - name: BuildSelectDockerImage
-        run: docker build --build-arg JELLYFIN_RELEASE=${{ inputs.JELLYFIN_RELEASE }} FFMPEG_RELEASE=${{inputs.FFMPEG5_RELEASE}} . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/jellyfin:${{ inputs.JELLYFIN_RELEASE }}
+        run: docker build --build-arg JELLYFIN_RELEASE=${{ inputs.JELLYFIN_RELEASE }} FFMPEG5_RELEASE=${{inputs.FFMPEG5_RELEASE}} . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/jellyfin:${{ inputs.JELLYFIN_RELEASE }}
       - name: Publish to Docker Repository
         uses: elgohr/Publish-Docker-Github-Action@master
         with:

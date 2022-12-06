@@ -4,6 +4,7 @@ FROM ghcr.io/linuxserver/baseimage-ubuntu:focal
 ARG BUILD_DATE
 ARG VERSION
 ARG JELLYFIN_RELEASE
+ARG FFMPEG5_RELEASE
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="thelamer"
 

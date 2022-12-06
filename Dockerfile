@@ -33,9 +33,9 @@ RUN \
       libssl1.1 \
       mesa-va-drivers ; \
   else \
-    curl -o jellyfin_server.deb https://repo.jellyfin.org/releases/server/ubuntu/versions/stable/server/${JELLYFIN_RELEASE}/jellyfin-server_${JELLYFIN_RELEASE}-1_amd64.deb &&\
-    curl -o jellyfin_web.deb https://repo.jellyfin.org/releases/server/ubuntu/versions/stable/web/${JELLYFIN_RELEASE}/jellyfin-web_${JELLYFIN_RELEASE}-1_all.deb &&\
-    curl -o jellyfin-ffmpeg5.deb https://repo.jellyfin.org/releases/server/ubuntu/versions/jellyfin-ffmpeg/${FFMPEG5_RELEASE}/jellyfin-ffmpeg5_${FFMPEG5_RELEASE}-focal_amd64.deb &&\
+    wget -O jellyfin_server.deb https://repo.jellyfin.org/releases/server/ubuntu/versions/stable/server/${JELLYFIN_RELEASE}/jellyfin-server_${JELLYFIN_RELEASE}-1_amd64.deb &&\
+    wget -O jellyfin_web.deb https://repo.jellyfin.org/releases/server/ubuntu/versions/stable/web/${JELLYFIN_RELEASE}/jellyfin-web_${JELLYFIN_RELEASE}-1_all.deb &&\
+    wget -O jellyfin-ffmpeg5.deb https://repo.jellyfin.org/releases/server/ubuntu/versions/jellyfin-ffmpeg/${FFMPEG5_RELEASE}/jellyfin-ffmpeg5_${FFMPEG5_RELEASE}-focal_amd64.deb &&\
     dpkg -i jellyfin_*.deb jellyfin-ffmpeg5.deb && \
     apt-get install -y --no-install-recommends \
       at \

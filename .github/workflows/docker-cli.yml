@@ -5,8 +5,8 @@ on:
     inputs:
       JELLYFIN_RELEASE:
         description: 'JELLYFIN RELEASE'
-        required: true
-        default: '10.8.8'
+        required: false
+        default: ''
         type: choice
         options:
           - 10.8.1
@@ -17,6 +17,7 @@ on:
           - 10.8.6
           - 10.8.7
           - 10.8.8
+          - ''
 
 jobs:
   build:

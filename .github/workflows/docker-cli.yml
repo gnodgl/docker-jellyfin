@@ -2,7 +2,22 @@ name: Custom Jellyfin Image with GA
 
 on:
   workflow_dispatch:
-   
+    inputs:
+      JELLYFIN_RELEASE:
+        description: 'JELLYFIN RELEASE'
+        required: true
+        default: '10.8.8-1'
+        type: choice
+        options:
+          - 10.8.1-1
+          - 10.8.2-1
+          - 10.8.3-1
+          - 10.8.4-1
+          - 10.8.5-1
+          - 10.8.6-1
+          - 10.8.7-1
+          - 10.8.8-1
+
 jobs:
   build:
 
@@ -13,10 +28,12 @@ jobs:
         uses: actions/checkout@v3
       - name: BuildLatestDockerImage
         run: docker build  . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/jellyfin:latest
+      - name: BuildSelectDockerImage
+        run: docker build --build-arg JELLYFIN_RELEASE=${{ inputs.JELLYFIN_RELEASE }} . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/jellyfin:${{ inputs.JELLYFIN_RELEASE }}
       - name: Publish to Docker Repository
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: ${{ secrets.DOCKER_USERNAME }}/jellyfin
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          tags: "latest"
+          tags: "latest,${{ inputs.JELLYFIN_RELEASE }}"

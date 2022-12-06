@@ -5,8 +5,8 @@ on:
     inputs:
       JELLYFIN_RELEASE:
         description: 'JELLYFIN RELEASE'
-        required: false
-        default: ''
+        required: true
+        default: '10.8.8'
         type: choice
         options:
           - 10.8.1
@@ -17,8 +17,16 @@ on:
           - 10.8.6
           - 10.8.7
           - 10.8.8
-          - ''
-
+      FFMPEG5_RELEASE:
+        description: 'JELLYFIN_FFMPEG5 RELEASE'
+        required: true
+        default: '5.1.2-4'
+        type: choice
+        options:
+          - 5.1.2-1
+          - 5.1.2-2
+          - 5.1.2-3
+          - 5.1.2-4
 jobs:
   build:
 
@@ -30,7 +38,7 @@ jobs:
       - name: BuildLatestDockerImage
         run: docker build  . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/jellyfin:latest
       - name: BuildSelectDockerImage
-        run: docker build --build-arg JELLYFIN_RELEASE=${{ inputs.JELLYFIN_RELEASE }} . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/jellyfin:${{ inputs.JELLYFIN_RELEASE }}
+        run: docker build --build-arg JELLYFIN_RELEASE=${{ inputs.JELLYFIN_RELEASE }} FFMPEG_RELEASE=${{inputs.FFMPEG5_RELEASE}} . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/jellyfin:${{ inputs.JELLYFIN_RELEASE }}
       - name: Publish to Docker Repository
         uses: elgohr/Publish-Docker-Github-Action@master
         with:

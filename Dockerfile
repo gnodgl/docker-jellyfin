@@ -48,6 +48,7 @@ RUN \
   fi && \
   echo "**** cleanup ****" && \
   rm -rf \
+    *.deb \
     /tmp/* \
     /var/lib/apt/lists/* \
     /var/tmp/*

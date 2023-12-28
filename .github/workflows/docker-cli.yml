@@ -9,10 +9,10 @@ on:
         default: '10.8.10'
         type: choice
         options:
-          - 10.8.7
-          - 10.8.8
           - 10.8.9
           - 10.8.10
+          - 10.8.11
+          - 10.8.12
 jobs:
   build:
 

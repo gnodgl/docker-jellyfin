@@ -24,24 +24,24 @@ RUN \
     apt-get install -y --no-install-recommends \
       at \
       jellyfin-server \
-      jellyfin-ffmpeg5 \
+      jellyfin-ffmpeg6 \
       jellyfin-web \
       libfontconfig1 \
       libfreetype6 \
       fonts-noto-cjk-extra \
-      libssl1.1 \
+      xmlstarlet \
       mesa-va-drivers ; \
   else \
-    curl -o jellyfin_server.deb -L https://repo.jellyfin.org/releases/server/ubuntu/versions/stable/server/${JELLYFIN_RELEASE}/jellyfin-server_${JELLYFIN_RELEASE}-1_amd64.deb &&\
-    curl -o jellyfin_web.deb -L https://repo.jellyfin.org/releases/server/ubuntu/versions/stable/web/${JELLYFIN_RELEASE}/jellyfin-web_${JELLYFIN_RELEASE}-1_all.deb &&\
+    curl -o jellyfin_server.deb -L https://repo.jellyfin.org/files/server/ubuntu/stable/v${JELLYFIN_RELEASE}/amd64/jellyfin-server_${JELLYFIN_RELEASE}+ubu2204_amd64.deb &&\
+    curl -o jellyfin_web.deb -L https://repo.jellyfin.org/files/server/ubuntu/stable/v${JELLYFIN_RELEASE}/amd64/jellyfin-web_${JELLYFIN_RELEASE}+ubu2204_all.deb &&\
     apt-get update && \
     apt-get install -y --no-install-recommends \
       at \
-      jellyfin-ffmpeg5\
+      jellyfin-ffmpeg6\
       libfontconfig1 \
       libfreetype6 \
       fonts-noto-cjk-extra \
-      libssl1.1 \
+      xmlstarlet \
       mesa-va-drivers && \
     dpkg -i jellyfin_*.deb && \
     apt-get -f install ; \

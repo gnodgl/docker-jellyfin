@@ -9,10 +9,8 @@ on:
         default: '10.8.10'
         type: choice
         options:
-          - 10.9.4
-          - 10.9.5
-          - 10.9.6
           - 10.9.7
+          - 10.9.8
 
 
 jobs:

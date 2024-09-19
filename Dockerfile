@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:jammy
+FROM ghcr.io/linuxserver/baseimage-ubuntu:noble
 
 # set version label
 ARG BUILD_DATE
@@ -18,7 +18,7 @@ RUN \
     gnupg && \
   echo "**** install jellyfin *****" && \
      curl -s https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key | apt-key add - && \
-     echo 'deb [arch=amd64] https://repo.jellyfin.org/ubuntu jammy main' > /etc/apt/sources.list.d/jellyfin.list && \
+     echo 'deb [arch=amd64] https://repo.jellyfin.org/ubuntu noble main' > /etc/apt/sources.list.d/jellyfin.list && \
   if [ -z ${JELLYFIN_RELEASE+x} ]; then \
     apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -32,8 +32,8 @@ RUN \
       xmlstarlet \
       mesa-va-drivers ; \
   else \
-    curl -o jellyfin_server.deb -L https://repo.jellyfin.org/files/server/ubuntu/stable/v${JELLYFIN_RELEASE}/amd64/jellyfin-server_${JELLYFIN_RELEASE}+ubu2204_amd64.deb &&\
-    curl -o jellyfin_web.deb -L https://repo.jellyfin.org/files/server/ubuntu/stable/v${JELLYFIN_RELEASE}/amd64/jellyfin-web_${JELLYFIN_RELEASE}+ubu2204_all.deb &&\
+    curl -o jellyfin_server.deb -L https://repo.jellyfin.org/files/server/ubuntu/stable/v${JELLYFIN_RELEASE}/amd64/jellyfin-server_${JELLYFIN_RELEASE}+ubu2404_amd64.deb &&\
+    curl -o jellyfin_web.deb -L https://repo.jellyfin.org/files/server/ubuntu/stable/v${JELLYFIN_RELEASE}/amd64/jellyfin-web_${JELLYFIN_RELEASE}+ubu2404_all.deb &&\
     apt-get update && \
     apt-get install -y --no-install-recommends \
       at \

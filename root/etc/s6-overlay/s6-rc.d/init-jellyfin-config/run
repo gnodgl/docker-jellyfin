@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+# create directories
+mkdir -p \
+    /config/{log,data/plugins/configurations,data/transcodes,cache} \
+    /data \
+    /transcode
+
+# permissions
+lsiown abc:abc \
+    /config \
+    /config/* \
+    /config/data/plugins \
+    /config/data/plugins/configurations \
+    /config/data/transcodes \
+    /transcode

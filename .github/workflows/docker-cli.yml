@@ -6,13 +6,12 @@ on:
       JELLYFIN_RELEASE:
         description: 'JELLYFIN RELEASE'
         required: true
-        default: '10.10.4'
+        default: '10.11.1'
         type: choice
         options:
-          - 10.10.4
-          - 10.10.5
-          - 10.10.6
           - 10.10.7
+          - 10.11.0
+          - 10.11.1
 
 
 jobs:

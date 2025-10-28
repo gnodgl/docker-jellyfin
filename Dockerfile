@@ -28,6 +28,7 @@ RUN \
       jellyfin-web \
       libfontconfig1 \
       libfreetype6 \
+      libjemalloc2 \
       fonts-noto-cjk-extra \
       xmlstarlet \
       mesa-va-drivers ; \
@@ -40,6 +41,7 @@ RUN \
       jellyfin-ffmpeg6\
       libfontconfig1 \
       libfreetype6 \
+      libjemalloc2 \
       fonts-noto-cjk-extra \
       xmlstarlet \
       mesa-va-drivers && \
